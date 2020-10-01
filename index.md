@@ -1,5 +1,7 @@
 ## Exposing Fake COVID-19 News
 
+<img src="CS 4641 Proposal Video Presentation.png">
+
 ### Introduction
 With the emphasis of social media on our present day society, information is being spread faster than ever. Users can stay up to date with the internet’s latest trends, political activity, and possibly the hottest topic of 2020, Covid-19 related news. However, while great at quickly sharing news, social media also allows for anybody to post information as the truth, regardless if the facts are accurate. The goal of our machine learning project is to create a model to detect Covid-19 related “fake news”, or untrue information, presented as real news found in social media. Our model will be able to tell whether an article is related to Covid-19 and from there, decide whether the article presents factual information.
 
@@ -39,13 +41,18 @@ Ideally, our project will successfully categorize posts as ‘fake news’ or �
 
 ### References
 How Facebook Is Using AI to Fight COVID-19 Misinformation
+
 Tekla S. Perry
 https://spectrum.ieee.org/view-from-the-valley/artificial-intelligence/machine-learning/how-facebook-is-using-ai-to-fight-covid19-misinformation
 
+
 Fake News Detection: A Deep Learning Approach
+
 Aswini Thota, Priyanka Tilak, Simrat Ahluwalia, Nibrat Lohia
 https://scholar.smu.edu/cgi/viewcontent.cgi?article=1036&context=datasciencereview
 
+
 CoAID: COVID-19 Healthcare Misinformation Dataset
+
 Limeng Cui, Dongwon Lee
 https://arxiv.org/pdf/2006.00885.pdf
