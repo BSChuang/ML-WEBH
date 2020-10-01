@@ -1,37 +1,38 @@
-## Welcome to GitHub Pages
+## Exposing Fake COVID-19 News
 
-You can use the [editor on GitHub](https://github.com/BSChuang/ML-WEBH/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+### Introduction
+With the emphasis of social media on our present day society, information is being spread faster than ever. Users can stay up to date with the internet’s latest trends, political activity, and possibly the hottest topic of 2020, Covid-19 related news. However, while great at quickly sharing news, social media also allows for anybody to post information as the truth, regardless if the facts are accurate. The goal of our machine learning project is to create a model to detect Covid-19 related “fake news”, or untrue information, presented as real news found in social media. Our model will be able to tell whether an article is related to Covid-19 and from there, decide whether the article presents factual information.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+Users must remain vigilant and rely on their intuition or fact-check the articles they read to guarantee its validity. However, with the constant stream of information and posts, this rarely happens. Data scientists have created “fake news” classifiers in the past, but nothing on the same scale has been done with Covid-19 news. Creating an unbiased classifier tailored to check articles under this topic will be extremely helpful to determine the true developments regarding Covid-19.
 
-### Markdown
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+### Methods
+Expected
+- Kaggle Fake News dataset
+- SVM-based text classifier
+- Word2Vec to vectorize posts
+- K-means for topic modeling
 
-```markdown
-Syntax highlighted code block
+Unique Aspects
+- We’ll try to classify not only the body of the post, but also the comments
 
-# Header 1
-## Header 2
-### Header 3
+Risks
+- We risk having too many false positives, resulting in arbitrary censorship of good posts
 
-- Bulleted
-- List
+Costs
+- No expected costs, all involved algos aren’t too computationally intensive
 
-1. Numbered
-2. List
+Timeframe
+- Likely 1-2 months for data exploration, training, and results validation
 
-**Bold** and _Italic_ and `Code` text
+### Results
+- Create software in which users can upload a social media post to be scanned
+- Software will utilize machine learning principles to categorize the post as containing or not containing fake news about Coronavirus
 
-[Link](url) and ![Image](src)
-```
+Checks for success
+- Mid-term check: use various clustering algorithms to determine if we are able to differentiate posts
+- Final check: run application with existing datasets of posts and evaluate the performance
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+### Discussion
 
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/BSChuang/ML-WEBH/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+Ideally, our project will successfully categorize posts as ‘fake news’ or ‘not fake news’. If we are successful, our project could be used to flag fake news posts on social media for review. This would involve some room for error, as fake/real news can use similar phrases. Human review would allow for false positives without immediately taking down real new posts. Finally, our model would help control the spread of fake news and misinformation on social media sites, improving trust by the user. 
