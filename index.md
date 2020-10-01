@@ -9,25 +9,23 @@ Users must remain vigilant and rely on their intuition or fact-check the article
 
 
 ### Methods
-Although some specifics are still in flux, we have already established a high level plan for the completion of this project. We are currently evaluating three datasets as possible sources:
+Although some specifics are in flux, we already have a plan for the methods we'll use for this project. We're currently evaluating three datasets:
 
 1. [Kaggle Fake News](https://www.kaggle.com/c/fake-news/data)
 2. [TweetsCOV19](https://data.gesis.org/tweetscov19/#dataset)
 3. [CoAID](https://github.com/cuilimeng/CoAID/tree/master/07-01-2020)
 
-Each dataset has distinct advantages and disadvantages. CoAID is the most directly topical, containing various social media posts and labels regarding truth / falsehood. However, it also quite limited in size, which may ultimately limit the predictive power of our model. TweetsCOV19 is larger, but lacks truth / falsehood labels. However, the TweetsCov19 dataset may still be of use when it comes to topic modeling and unsupervised learning. The Kaggle dataset is the largest and most popular option, but does not correspond directly to our project's goals. Instead of containing data regarding misleading social media posts, it instead focuses on fake news articles. Despite this domain mismatch, we do believe that models trained on the Kaggle dataset will likely generalize to social media posts fairly well.
+To train the classifier, we need to convert the text of the post into a vector representation. We plan to explore multiple techniques, including TF-IDF, Doc2Vec, and BERT
 
-To actually train the classifier, we will first need to "vectorize" the input social media posts. In essence, this means converting the body text of the post into a numerical vector representation. We plan to explore a variety of techniques for this task, including TF-IDF, Doc2Vec, and BERT. The ultimate choice will likely require us balancing the performance of the classifier with the difficulty of implementing each encoding strategy.
+This project also has an unsupervised learning component. We'd like to perform k-means clustering on the vectorized representations of articles from the Kaggle dataset. We want to see if we can find a cluster corresponding to healthcare-specific fake news.
 
-Prior to the training of the classifier (which discriminates between true and fake news), we plan to use unsupervised learning to get a better feel for our data. We envision two main uses. First, we'd like to perform k-means clustering on the embedded representations of articles in the Kaggle dataset. It would be useful to see if fake news forms a distinct cluster, or if we can find a cluster corresponding to healthcare-specific fake news. Secondly, we believe unsupervised learning may be useful in discovering different sub-types of covid fake news. For this, we would like to use k-means clustering on the embedded representations of posts within the CoAID dataset to see how many distinct clusters form. We'd like to analyze these clusters and identify any distinct semantic attributes each cluster has.
+For the supervised portion, we aim to develop a classifier that can label social media posts as true or false. For this task, we will train a classifier with post vectors and input and truth / falsehood labels as output. We will try multiple models, including SVM, Random Forest, and Logistic Regression. We will choose the model based on which performs the best, in terms of accuracy and F1 score.
 
-For the supervised learning portion of the project, we aim to develop a classifier that can accurately label a given social media post as true or fake news. For this task, we will train a classifier of input-output pairs composed of the vector representation of each social media post and that post's corresponding truth / falsehood label. We will likely try a variety of models, including SVM, Random Forest, and Logistic Regression. The model chosen will ultimately depend on the which model tested results in the best performance.
+Our approach has some unique aspects. Unlike some approaches, we will look at not only the text of the post, but also the text of the comments associated with that post. We believe this can increase accuracy in label prediction.
 
-One unique aspect of our approach is the data sources we will draw from when evaluating the truth of a social media post. Unlike some approaches, we will look at not only the body text of the post, but also the text of all the comments associated with that post. We believe that the way users engage with fake news is likely quite distinct from the interaction patterns of real news, offering the potential for increased accuracy in label prediction.
+One risk of the project stems from false positives. If this system is used to automatically remove posts, and it removes a true post, then we risk enabling arbitrary censorship. Resultantly, we recommend that this system be strictly used with human supervision, i.e the output is used to flag posts, after which a human much manually review.
 
-One risk associated with this project is the issue posed by false positives. If this system was used to automatically remove posts and a post was erroneously flagged as fake news, then the affected user would likely feel slighted by that automated system. In the worst case, this issue creates unnecessary and arbitrary censorship. As a result, we recommend that this system, once developed, is strictly used with a human-in-the-loop. In other words, we recommend that the model output is used only to flag potentially misleading posts, and that a human moderator must manually verify that the content of the post is false before the post is deleted.
-
-We believe this project is completely achievable within the provided timeframe of 2 months. This includes all steps from data exploration, to model training, to results evaluation. We don't expect there to be any associated costs, as none of the techniques used are particularly costly or computationally expensive to implement.
+We believe this project is achievable within 2 months. We don't expect there to be any associated costs, since our methods aren't computationally expensive to implement.
 
 ### Results
 By the end of this project, we want to create software in which users can upload a social media post to be scanned. From there, we will utilize machine learning principles to categorize the post as containing or not containing fake news about Coronavirus.
