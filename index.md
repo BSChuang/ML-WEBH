@@ -3,9 +3,9 @@
 <img src="CS 4641 Proposal Video Presentation.png">
 
 ### Introduction
-With the emphasis of social media on our present day society, information is being spread faster than ever. Users can stay up to date with the internet’s latest trends, political activity, and possibly the hottest topic of 2020, Covid-19 related news. However, while great at quickly sharing news, social media also allows for anybody to post information as the truth, regardless if the facts are accurate. The goal of our machine learning project is to create a model to detect Covid-19 related “fake news”, or untrue information, presented as real news found in social media. Our model will be able to tell whether an article is related to Covid-19 and from there, decide whether the article presents factual information.
+Social media plays an important role in disseminating Covid-19 related information. However, although social media is great at disseminating information, there aren't strong controls on what information gets spread. The goal of our project is to create a model to detect Covid-19 related “fake news”, i.e. information that is factually inaccurate or even dangerous. Our model will be able to tell whether a social media post is Covid-19 related and from there, decide whether the post is factual.
 
-Users must remain vigilant and rely on their intuition or fact-check the articles they read to guarantee its validity. However, with the constant stream of information and posts, this rarely happens. Data scientists have created “fake news” classifiers in the past, but nothing on the same scale has been done with Covid-19 news. Creating an unbiased classifier tailored to check articles under this topic will be extremely helpful to determine the true developments regarding Covid-19.
+Data scientists have created fake news classifiers in the past, but nothing on the same scale has been done for Covid-19 specific information. Creating an unbiased classifier tailored to check social media posts about this topic will be extremely helpful in preventing the spread of misinformation online
 
 
 ### Methods
