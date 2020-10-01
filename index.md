@@ -26,10 +26,9 @@ Timeframe
 - Likely 1-2 months for data exploration, training, and results validation
 
 ### Results
-- Create software in which users can upload a social media post to be scanned
-- Software will utilize machine learning principles to categorize the post as containing or not containing fake news about Coronavirus
+By the end of this project, we want to create software in which users can upload a social media post to be scanned. From there, we will utilize machine learning principles to categorize the post as containing or not containing fake news about Coronavirus.
 
-Checks for success
+To guarantee we meet expectations, we have organized our checks for success as such:
 - Mid-term check: use various clustering algorithms to determine if we are able to differentiate posts
 - Final check: run application with existing datasets of posts and evaluate the performance
 
