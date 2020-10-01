@@ -11,6 +11,9 @@ Users must remain vigilant and rely on their intuition or fact-check the article
 ### Methods
 Expected
 - Kaggle Fake News dataset
+  - https://data.gesis.org/tweetscov19/#dataset
+  - https://github.com/cuilimeng/CoAID/tree/master/07-01-2020
+
 - SVM-based text classifier
 - Word2Vec to vectorize posts
 - K-means for topic modeling
@@ -40,19 +43,15 @@ Ideally, our project will successfully categorize posts as ‘fake news’ or �
 
 
 ### References
-How Facebook Is Using AI to Fight COVID-19 Misinformation
-
-Tekla S. Perry
+How Facebook Is Using AI to Fight COVID-19 Misinformation,
+Tekla S. Perry,
 https://spectrum.ieee.org/view-from-the-valley/artificial-intelligence/machine-learning/how-facebook-is-using-ai-to-fight-covid19-misinformation
 
 
-Fake News Detection: A Deep Learning Approach
-
-Aswini Thota, Priyanka Tilak, Simrat Ahluwalia, Nibrat Lohia
+Fake News Detection: A Deep Learning Approach,
+Aswini Thota, Priyanka Tilak, Simrat Ahluwalia, Nibrat Lohia,
 https://scholar.smu.edu/cgi/viewcontent.cgi?article=1036&context=datasciencereview
 
-
-CoAID: COVID-19 Healthcare Misinformation Dataset
-
-Limeng Cui, Dongwon Lee
+CoAID: COVID-19 Healthcare Misinformation Dataset,
+Limeng Cui, Dongwon Lee,
 https://arxiv.org/pdf/2006.00885.pdf
