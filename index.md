@@ -1,7 +1,5 @@
 ## Exposing Fake COVID-19 News
 
-<img src="CS 4641 Proposal Video Presentation.png">
-
 ### Introduction
 Social media plays an important role in disseminating Covid-19 related information. However, although social media is great at disseminating information, there aren't strong controls on what information gets spread. The goal of our project is to create a model to detect Covid-19 related “fake news”, i.e. information that is factually inaccurate or even dangerous. Our model will be able to tell whether a social media post is Covid-19 related and from there, decide whether the post is factual.
 
@@ -9,6 +7,9 @@ Data scientists have created fake news classifiers in the past, but nothing on t
 
 
 ### Methods
+
+
+
 Although some specifics are in flux, we already have a plan for the methods we'll use for this project. We're currently evaluating three datasets:
 
 1. [Kaggle Fake News](https://www.kaggle.com/c/fake-news/data)
