@@ -1,12 +1,12 @@
 ## Exposing Fake COVID-19 News
 
 ### Introduction
-Social media plays an important role in disseminating Covid-19 related information. However, although social media is great at disseminating information, there aren't strong controls on what information gets spread. The goal of our project is to create a model to detect Covid-19 related “fake news”, i.e. information that is factually inaccurate or even dangerous. Our model will be able to tell whether a social media post is Covid-19 related and from there, decide whether the post is factual.
+Social media plays an important role in disseminating Covid-19 related information. However, despite its importance, there aren't strong controls on what information gets spread. The goal of our project is to create a machine learning model to detect Covid-19 related “fake news”. This includes information that is factually inaccurate or even dangerous.
 
-Data scientists have created fake news classifiers in the past, but nothing on the same scale has been done for Covid-19 specific information. Creating an unbiased classifier tailored to check social media posts about this topic will be extremely helpful in preventing the spread of misinformation online
+Data scientists have created fake news classifiers in the past, but we are not aware at any efforts to classify information related specifically to Covid-19. Creating a classifier tailored to check social media posts about this topic will be extremely helpful in preventing the spread of healthcare misinformation online.
 
 
-### Methods (What we did / the plain results)
+### Methods
 
 To obtain our initial dataset, we downloaded a set of Covid-19 related tweets which had already been labelled as real or fake. This was more difficult than expected as the only the tweet id's were given, so some web-scraping had to be done to obtain the tweet text itself. Furthermore, corrupted tweet ids or those missing vital information had to be purged from the dataset. By the end of the data-cleaning we were left with 1092 tweets to analyze, 12% of which were fake, with 88% as real.
 
