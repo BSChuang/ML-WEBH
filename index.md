@@ -11,8 +11,11 @@ Data scientists have created fake news classifiers in the past, but nothing on t
 {BEN}
 data downloading / web scraping, vectorization, data cleaning, class imbalance stats, word / class correlations, 
 
-{WILL}
-find 99% var PCA, graph 2d PCA True / False, clustering k-means, graph 2d PCA for clusters, word heat map for clusters.
+In order to examine our performance, we plotted various pieces of data and analyzed the results. To establish what dimensionality to use for our dataframe, we used PCA to obtain the explained variance ratio for each dimension and plotted the variance explained by dimensionality. We found that of the original 702 dimensions, only 314 were required to explain 99% of the variance in the data.
+
+To visualize our clustering and labeling assignments, we plotted the first and second dimensions of our features as x and y coordinates, respectively. In our plots, we colored the points according to cluster assignment and real/fake label. After viewing these plots, we could see that we are able to differentiate the real and fake posts and group those into relatively distinct clusters. We initially generated the data for these plots using KMeans clustering, but eventually settled on DBScan as it proved more effective.
+
+Additionally, we wanted to evaluate which features were corresponding most heavily to specific clusters. To achieve this, we plotted the frequency of occurrence for features in each cluster onto heatmaps. These plots show that certain certain features are more strongly associated with certain clusters, and this can help us further evaluate how to differentiate tweets containing these features.
 
 ----old------
 
