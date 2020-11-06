@@ -23,8 +23,8 @@ To visualize our clustering and labeling assignments, we plotted the first and s
 
 Additionally, we wanted to evaluate which features were corresponding most heavily to specific clusters. To achieve this, we plotted the normalized correlations for words in each cluster onto bar charts. These plots show that certain certain features are more strongly associated with certain clusters, and this can help us further evaluate how to differentiate tweets containing these features.
 
-<images src="images/correlations_fake.png" />
-<images src="images/correlations_true.png" />
+<img src="images/correlations_fake.png" />
+<img src="images/correlations_true.png" />
 
 ----old------
 
