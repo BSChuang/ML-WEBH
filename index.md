@@ -16,7 +16,7 @@ In order to examine our performance, we plotted various pieces of data and analy
 
 To visualize our clustering and labeling assignments, we plotted the first and second dimensions of our features as x and y coordinates, respectively. In our plots, we colored the points according to cluster assignment and real/fake label. After viewing these plots, we could see that we are able to differentiate the real and fake posts and group those into relatively distinct clusters. We initially generated the data for these plots using KMeans clustering, but eventually settled on DBScan as it proved more effective.
 
-Additionally, we wanted to evaluate which features were corresponding most heavily to specific clusters. To achieve this, we plotted the frequency of occurrence for features in each cluster onto heatmaps. These plots show that certain certain features are more strongly associated with certain clusters, and this can help us further evaluate how to differentiate tweets containing these features.
+Additionally, we wanted to evaluate which features were corresponding most heavily to specific clusters. To achieve this, we plotted the normalized correlations for words in each cluster onto bar charts. These plots show that certain certain features are more strongly associated with certain clusters, and this can help us further evaluate how to differentiate tweets containing these features.
 
 ----old------
 
