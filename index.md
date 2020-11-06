@@ -18,15 +18,13 @@ In order to examine our performance, we plotted various pieces of data and analy
 
 To visualize our clustering and labeling assignments, we plotted the first and second dimensions of our features as x and y coordinates, respectively. In our plots, we colored the points according to cluster assignment and real/fake label. After viewing these plots, we could see that we are able to differentiate the real and fake posts and group those into relatively distinct clusters. We initially generated the data for these plots using KMeans clustering, but eventually settled on DBScan as it proved more effective. Below, you can see the ground truth as well as the cluster assignments.
 
-![Ground Truth](https://github.com/BSChuang/ML-WEBH/blob/gh-pages/images/ground_truth.png)
-
-![DBScan Clusters](https://github.com/BSChuang/ML-WEBH/blob/gh-pages/images/dbscan_clusters.png)
+<img src="images/ground_truth.png" />
+<img src="images/dbscan_clusters.png" />
 
 Additionally, we wanted to evaluate which features were corresponding most heavily to specific clusters. To achieve this, we plotted the normalized correlations for words in each cluster onto bar charts. These plots show that certain certain features are more strongly associated with certain clusters, and this can help us further evaluate how to differentiate tweets containing these features.
 
-![Word Correlations to "Fake" Cluster](https://github.com/BSChuang/ML-WEBH/blob/gh-pages/images/correlations_fake.png)
-
-![Word Correlations to "True" Cluster](https://github.com/BSChuang/ML-WEBH/blob/gh-pages/images/correlations_true.png)
+<images src="images/correlations_fake.png" />
+<images src="images/correlations_true.png" />
 
 ----old------
 
