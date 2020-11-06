@@ -18,6 +18,8 @@ To visualize our clustering and labeling assignments, we plotted the first and s
 
 Additionally, we wanted to evaluate which features were corresponding most heavily to specific clusters. To achieve this, we plotted the normalized correlations for words in each cluster onto bar charts. These plots show that certain certain features are more strongly associated with certain clusters, and this can help us further evaluate how to differentiate tweets containing these features.
 
+(https://github.com/BSChuang/ML-WEBH/blob/gh-pages/images/correlations_fake.png)
+
 ----old------
 
 Although some specifics are in flux, we already have a plan for the methods we'll use for this project. We're currently evaluating three datasets:
