@@ -26,7 +26,7 @@ Additionally, we wanted to evaluate which features were corresponding most heavi
 
 ![Word Correlations to "Fake" Cluster](https://github.com/BSChuang/ML-WEBH/blob/gh-pages/images/correlations_fake.png)
 
-![Word Correlations to "True" Cluster](https://github.com/BSChuang/ML-WEBH/blob/gh-pages/images/correlations_fake.png)
+![Word Correlations to "True" Cluster](https://github.com/BSChuang/ML-WEBH/blob/gh-pages/images/correlations_true.png)
 
 ----old------
 
