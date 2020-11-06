@@ -8,8 +8,9 @@ Data scientists have created fake news classifiers in the past, but nothing on t
 
 ### Methods (What we did / the plain results)
 
-{BEN}
-data downloading / web scraping, vectorization, data cleaning, class imbalance stats, word / class correlations, 
+To obtain our initial dataset, we downloaded a set of Covid-19 related tweets which had already been labelled as real or fake. This was more difficult than expected as the only the tweet id's were given, so some web-scraping had to be done to obtain the tweet text itself. Furthermore, corrupted tweet ids or those missing vital information had to be purged from the dataset. By the end of the data-cleaning we were left with 1092 tweets to analyze, 12% of which were fake, with 88% as real.
+
+We then performed vectorization to produce quantifiable data from the set of tweets. We decided on TF-IDF as our method of vectorization as it highlights the data which is most important in figuring out the validity of a tweet. This also solved the problem of data cleaning as TF-IDF recognizes the irrelevancy of words such as hyperlinks or those such as "the" or "of". With our vectorized dataset, we could now move onto dimensionality-reduction.
 
 In order to examine our performance, we plotted various pieces of data and analyzed the results. To establish what dimensionality to use for our dataframe, we used PCA to obtain the explained variance ratio for each dimension and plotted the variance explained by dimensionality. We found that of the original 702 dimensions, only 314 were required to explain 99% of the variance in the data.
 
