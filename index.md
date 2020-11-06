@@ -14,7 +14,7 @@ We then performed vectorization to produce quantifiable data from the set of twe
 
 In order to examine our performance, we plotted various pieces of data and analyzed the results. To establish what dimensionality to use for our dataframe, we used PCA to obtain the explained variance ratio for each dimension and plotted the variance explained by dimensionality. We found that of the original 702 dimensions, only 314 were required to explain 99% of the variance in the data.
 
-![Cumulative Variance](https://github.com/BSChuang/ML-WEBH/blob/gh-pages/images/cumulative_variance.png)
+<img src="images/cumulative_variance.png" />
 
 To visualize our clustering and labeling assignments, we plotted the first and second dimensions of our features as x and y coordinates, respectively. In our plots, we colored the points according to cluster assignment and real/fake label. After viewing these plots, we could see that we are able to differentiate the real and fake posts and group those into relatively distinct clusters. We initially generated the data for these plots using KMeans clustering, but eventually settled on DBScan as it proved more effective. Below, you can see the ground truth as well as the cluster assignments.
 
