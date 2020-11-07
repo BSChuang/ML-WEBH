@@ -14,33 +14,33 @@ We next performed a vectorization step to convert tweet text into numeric vector
 
 At the end of the vectorization step, our data contained 702 dimensions. We used PCA to create a representation of this data with a lower dimensionality. Specifically, we chose the minimum number of PCA components that would capture 99% of the variance within the dataset. We found that the original 702 dimensional representation could be reduced to only the first 314 PCA dimensions, while still explaining 99% of the variance. A visualization of the cumulative variance explained by each PCA dimension is shown below.
 
-<img src="images/cumulative_variance.png" />
+[<img src="images/cumulative_variance.png" />]
 
 In order to gain an intuitive understanding of the dataset, we attempted to visualize the pre-existing label assignments. We employed two techniques. The first made use of a two-dimensional plot, where the first and second PCA dimensions are shown on the X and Y axis, respectively. Each tweet within the dataset is graphed on this plot, and colored according to it's truth value. This plot is shown below, with true tweets in green, and false tweets in red.
 
-[image]
+[<img src="images/default_pca.png" />]
 
 We were encouraged by this visualization, since it appears that each label forms fairly distinctive groups. This portends well for future supervised learning / classification efforts. 
 
 We also wanted to gain an understanding of the semantic differences between true and false tweets. To do this, we calculated the correlation between each class label, and all the single-word tf-idf features. We then sorted these tf-idf features based off of the correlation. In our visualization, we chose the top 10 mostly strongly correlated words for each class, and plotted their correlation strengths along the y-axis of a bar graph. We chose to normalize these correlations in order to better show the relative strengths of the relationships among all words shown. This plot is can be seen below.
 
-[image]
+[<img src="images/default_words.png" />]
 
 This visualization allows us to get an inuitive understanding of the topics associated with each label. For instance, it appears that true tweets tend to focus on topics related to disease prevention and "evidence", while false tweets tend to contain comparisons to the common flu, and may contain referenes to political leaders.
 
 After the earlier dimensionality reduction step, we also wanted to apply unsupervised clustering techniques to our data. We first attempted to employ K-Means clustering. In order to determine the proper number of clusters, we attempted to apply the elbow method of optimization. A plot comparing Within-Cluster-Sum-Of-Squares (WCSS) to the number of clusters is shown below.
 
-[image]
+[<img src="images/elbow_method.png" />]
 
 As can be seen, the decrease is fairly linear with respect to increasing cluster number. This may indicate that K-Means is not the best approach for this dataset. Likely, this stems from the shape of the data, which appears to have one core circular region, and two oblong outer regions. Since K-Means is best suited to circularly clustered data, it likely cannot properly cluster the two oblong regions. Nonetheless, we were curious about further exploring the K-Means results. We performed K-Means with both 2 and 6 clusters. We explored these results through similar visualizations from the exploration of the ground truth values.
 
 The two-dimensional PCA plots for both 2-cluster and 6-cluster assignments can be seen below.
 
-[image]
+[<img src="images/kmeans_pca.png" />]
 
 It's notable that these cluster assignments are visually quite different than the ground truth labels, likely indicating that the clusters produced by K-Means have created divisions of the original dataset that are semantically different than the ground-truth true/false division. We can visualize the semantic content of each cluster using the word correlation technique from earlier. The relevant bar charts are shown below.
 
-[image]
+[<img src="images/kmeans_words.png" />]
 
 There are some notable takeaways from these graphs. Although the 2D plot of the 2-cluster K-Means result is quite different from the 2D plot of the ground truth, the semantic visualization shown above seems to indicate that the topics contained in the 2-cluster K-Means class assignments seem to closely mirror the topics contained by the ground truth labels. We can see that cluster "_0_" contains similar words to those contained by the "Fake" label, as demonstrated by words like "just" and "flu". Similarly, we can see that cluster "_1_" contains similar words to those contained by the "True" label, as demonstrated by words like "spread" and "prevent".
 
@@ -50,13 +50,13 @@ In addition to K-Means clustering, we also we felt that DBSCAN clustering may pr
 
 As with K-Means, we wanted to visualize our clustering results using the same methods as earlier. The 2D PCA plot of the DBSCAN cluster assignments is shown below.
 
-[image]
+[<img src="images/dbscan_pca.png" />]
 
 Note that this plot has far more visual similarity to the plot of the ground truth labels, relative to the clustering produced by K-Means.
 
 We also wanted to explore the semantic relationships of each cluster, which is shown in the word correlation graphs below.
 
-[image]
+[<img src="images/dbscan_words.png" />]
 
 As expected the topics covered by the each DBSCAN cluster seem to closely mirror the topics covered by the ground truth groupings.
 
