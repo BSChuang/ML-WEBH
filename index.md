@@ -26,13 +26,15 @@ We also wanted to gain an understanding of the semantic differences between true
 
 [image]
 
+This visualization allows us to get an inuitive understanding of the topics associated with each label. For instance, it appears that true tweets tend to focus on topics related to disease prevention and "evidence", while false tweets tend to contain comparisons to the common flu, and may contain referenes to political leaders.
+
 After the earlier dimensionality reduction step, we also wanted to apply unsupervised clustering techniques to our data. We first attempted to employ K-Means clustering. In order to determine the proper number of clusters, we attempted to apply the elbow method of optimization. A plot comparing Within-Cluster-Sum-Of-Squares (WCSS) to the number of clusters is shown below.
 
 [image]
 
-As can be seen, the decrease is fairly linear with respect to increasing cluster number. This may indicate that K-Means is not the best approach for this dataset. Likely, this stems from the shape of the data, which appears to have one core circular region, and two oblong outer regions. Since K-Means is best suited to circularly clustered data, it likely cannot properly cluster the two oblong regions. Nonetheless, we were curious about further exploring the K-Means results. We performed K-Means with both 2 and 30 clusters. We explored these results through similar visualizations from the exploration of ground truth values.
+As can be seen, the decrease is fairly linear with respect to increasing cluster number. This may indicate that K-Means is not the best approach for this dataset. Likely, this stems from the shape of the data, which appears to have one core circular region, and two oblong outer regions. Since K-Means is best suited to circularly clustered data, it likely cannot properly cluster the two oblong regions. Nonetheless, we were curious about further exploring the K-Means results. We performed K-Means with both 2 and 6 clusters. We explored these results through similar visualizations from the exploration of the ground truth values.
 
-The two-dimensional PCA plots for both 2-cluster and 30-cluster assignments can be seen below.
+The two-dimensional PCA plots for both 2-cluster and 6-cluster assignments can be seen below.
 
 [image]
 
@@ -40,49 +42,42 @@ It's notable that these cluster assignments are visually quite different than th
 
 [image]
 
-To visualize our clustering and labeling assignments, we plotted the firswt and second dimensions of our features as x and y coordinates, respectively. In our plots, we colored the points according to cluster assignment and real/fake label. After viewing these plots, we could see that we are able to differentiate the real and fake posts and group those into relatively distinct clusters. We initially generated the data for these plots using KMeans clustering, but eventually settled on DBScan as it proved more effective. Below, you can see the ground truth as well as the cluster assignments.
+There are some notable takeaways from these graphs. Although the 2D plot of the 2-cluster K-Means result is quite different from the 2D plot of the ground truth, the semantic visualization shown above seems to indicate that the topics contained in the 2-cluster K-Means class assignments seem to closely mirror the topics contained by the ground truth labels. We can see that cluster "_0_" contains similar words to those contained by the "Fake" label, as demonstrated by words like "just" and "flu". Similarly, we can see that cluster "_1_" contains similar words to those contained by the "True" label, as demonstrated by words like "spread" and "prevent".
 
-<img src="images/ground_truth.png" />
-<img src="images/dbscan_clusters.png" />
+Additionally, the 6-cluster K-Means results are interesting because each cluster seems to represent a semantically distinct topic. For instance, it appears that cluster "_5_" is distinctly related to 5G mobile technology, likely reflecting tweets related to conspiracies that propose a link between 5G and covid-19.
 
-Additionally, we wanted to evaluate which features were corresponding most heavily to specific clusters. To achieve this, we plotted the normalized correlations for words in each cluster onto bar charts. These plots show that certain certain features are more strongly associated with certain clusters, and this can help us further evaluate how to differentiate tweets containing these features.
+In addition to K-Means clustering, we also we felt that DBSCAN clustering may produce interesting results. DBSCAN has two main hyperparameters: epsilon and min_samples. Epsilon controls how "far out" DBSCAN can look from an existing cluster assignment in order to claim an additional point. Min_samples controls the minimum number of samples required to for a cluster to count as one. We tuned this hyperparameters using a grid search to maximize classification precision relative to the ground truth, only considering hyperparameter values that resulted in a total of two DBSCAN clusters. This resulted in a precision of 86.9% when using epsilon = 32 and min_samples = 16.
 
-<img src="images/correlations_fake.png" />
-<img src="images/correlations_true.png" />
+As with K-Means, we wanted to visualize our clustering results using the same methods as earlier. The 2D PCA plot of the DBSCAN cluster assignments is shown below.
 
-----old------
+[image]
 
-Although some specifics are in flux, we already have a plan for the methods we'll use for this project. We're currently evaluating three datasets:
+Note that this plot has far more visual similarity to the plot of the ground truth labels, relative to the clustering produced by K-Means.
 
-[CoAID](https://github.com/cuilimeng/CoAID/tree/master/07-01-2020)
+We also wanted to explore the semantic relationships of each cluster, which is shown in the word correlation graphs below.
 
-To train the classifier, we need to convert the text of the post into a vector representation. We plan to explore multiple techniques, including TF-IDF, Doc2Vec, and BERT
+[image]
 
-This project also has an unsupervised learning component. We'd like to perform k-means clustering on the vectorized representations of articles from the Kaggle dataset. We want to see if we can find a cluster corresponding to healthcare-specific fake news.
+As expected the topics covered by the each DBSCAN cluster seem to closely mirror the topics covered by the ground truth groupings.
 
-For the supervised portion, we aim to develop a classifier that can label social media posts as true or false. For this task, we will train a classifier with post vectors and input and truth / falsehood labels as output. We will try multiple models, including SVM, Random Forest, and Logistic Regression. We will choose the model based on which performs the best, in terms of accuracy and F1 score.
+### Results Summary
 
-Our approach has some unique aspects. Unlike some approaches, we will look at not only the text of the post, but also the text of the comments associated with that post. We believe this can increase accuracy in label prediction.
+In the unsupervised portion of this project, we were able to complete all of our original goals and gain deep insights about the nature of our dataset. The three main tasks completed include:
+- successfully production of numeric vectors from text using TF-IDF
+- dimensionality reduction using PCA
+- data clustering and visualization using DBSCAN and K-Means
 
-One risk of the project stems from false positives. If this system is used to automatically remove posts, and it removes a true post, then we risk enabling arbitrary censorship. Resultantly, we recommend that this system be strictly used with human supervision, i.e the output is used to flag posts, after which a human must manually review.
+Crucially, we met our goal for the unsupervised learning phase by successfully producing clustered data and comparing those clusters to ground truth values.
 
-We believe this project is achievable within 2 months. We don't expect there to be any associated costs, since our methods aren't computationally expensive to implement.
+Looking forward, we can see that, while the supervised learning effort will likely produce useful results, the visual ambiguity in parts of the 2D PCA plot indicates that the system may have difficulty differentiating between true and false in some cases. This may help shape usage policy for our final classifier. We advocate it's use solely to flag potentially misleading tweets, which are then sent to a human for manual review. This approach can help avoid unnecesarry censorship.
 
-### Results Summary (interpretation of the results)
-
-{ETHAN}
-By the end of this project, we want to create software in which users can upload a social media post to be scanned. From there, we will utilize machine learning principles to categorize the post as containing or not containing fake news about Coronavirus.
-
-To guarantee we meet expectations, we have organized our checks for success as such:
-- Mid-term check: use various clustering algorithms to determine if we are able to differentiate posts
-- Final check: run application with existing datasets of posts and evaluate the performance
+As a check-for-success in the supervised learning portion of this assignment, we intend on producing a classifier that accurately differentiates between fake and true news, and producing metrics for its performance.
 
 ### Discussion
 
-{HANNAH}
 Ideally, our project will successfully categorize posts as ‘fake news’ or ‘not fake news’. If we are successful, our project could be used to flag fake news posts on social media for review. This would involve some room for error, as fake/real news can use similar phrases. Human review would allow for false positives without immediately taking down real new posts. Finally, our model would help control the spread of fake news and misinformation on social media sites, improving trust by the user. 
 
-Our main outcome this phase was the production of vectors from our dataset, a process which included some data cleaning and feature selection using PCA. We found success with the K-Means algorithm, which will also be useful for the supervised learning portion of this project. We can use our implementation to determine which features were best able to predict classification, and to see cluster formation between fake and true subcategories. In this unsupervised learning portion, the heat maps we generated helped us understand what features are most significant in our dataset. In the next phase of our project, we will use heat maps to visualize the distribution of fake versus true news after running the supervised learning algorithms. Looking forward, we plan on training our classifiers using the output of our PCA implementation. Some algorithms that we are currently considering are SVM and random forest, and we also plan on trying out a few more to see what models work best with the nuances of our dataset.
+Our main outcome this phase was the production of vectors from our dataset, a process which included some data cleaning and dimensionality reduction using PCA. We found success with the K-Means and DBSCAN algorithm, which may also be useful for exploring our results during supervised learning portion of this project. In this unsupervised learning portion, the bar charts we generated helped us understand what features are most significant in our dataset. In the next phase of our project, we will similar bar graphs to visualize the output of our classifier. We also plan on training our classifiers using the output of our PCA implementation. We will also investigate the SVM and random forest algorithms for classification.
 
 ### References
 How Facebook Is Using AI to Fight COVID-19 Misinformation,
@@ -96,3 +91,7 @@ Aswini Thota, Priyanka Tilak, Simrat Ahluwalia, Nibrat Lohia,
 CoAID: COVID-19 Healthcare Misinformation Dataset,
 Limeng Cui, Dongwon Lee,
 [https://arxiv.org/pdf/2006.00885.pdf](https://arxiv.org/pdf/2006.00885.pdf)
+
+### Links
+[Google Colab](https://colab.research.google.com/drive/1ZzHke7KS7PVrD3Q1yTxCcyKJLDQDFHdr?usp=sharing)
+[Midterm Video](https://www.youtube.com/watch?v=W9N257AYGyU)
