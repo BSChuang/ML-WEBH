@@ -94,6 +94,6 @@ Limeng Cui, Dongwon Lee,
 [https://arxiv.org/pdf/2006.00885.pdf](https://arxiv.org/pdf/2006.00885.pdf)
 
 ### Links
-[Google Colab](https://colab.research.google.com/drive/1ZzHke7KS7PVrD3Q1yTxCcyKJLDQDFHdr?usp=sharing)
+[Google Colab:](https://colab.research.google.com/drive/1ZzHke7KS7PVrD3Q1yTxCcyKJLDQDFHdr?usp=sharing) https://colab.research.google.com/drive/1ZzHke7KS7PVrD3Q1yTxCcyKJLDQDFHdr?usp=sharing
 
-[Midterm Video](https://www.youtube.com/watch?v=W9N257AYGyU)
+[Midterm Video:](https://www.youtube.com/watch?v=W9N257AYGyU) https://www.youtube.com/watch?v=W9N257AYGyU
