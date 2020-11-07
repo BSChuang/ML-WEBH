@@ -40,7 +40,8 @@ The two-dimensional PCA plots for both 2-cluster and 6-cluster assignments can b
 
 It's notable that these cluster assignments are visually quite different than the ground truth labels, likely indicating that the clusters produced by K-Means have created divisions of the original dataset that are semantically different than the ground-truth true/false division. We can visualize the semantic content of each cluster using the word correlation technique from earlier. The relevant bar charts are shown below.
 
-<img src="images/kmeans_words.png" />
+<img src="images/kmeans_words_2.png" />
+<img src="images/kmeans_words_6.png" />
 
 There are some notable takeaways from these graphs. Although the 2D plot of the 2-cluster K-Means result is quite different from the 2D plot of the ground truth, the semantic visualization shown above seems to indicate that the topics contained in the 2-cluster K-Means class assignments seem to closely mirror the topics contained by the ground truth labels. We can see that cluster __0__ contains similar words to those contained by the "Fake" label, as demonstrated by words like "just" and "flu". Similarly, we can see that cluster __1__ contains similar words to those contained by the "True" label, as demonstrated by words like "spread" and "prevent".
 
