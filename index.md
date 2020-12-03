@@ -1,5 +1,6 @@
 ## Exposing Fake COVID-19 News
 
+### Summary Figure
 <img src="CS 4641 Proposal Video Presentation.png" />
 
 ### Introduction
