@@ -1,5 +1,7 @@
 ## Exposing Fake COVID-19 News
 
+<img src="CS 4641 Proposal Video Presentation.png" />
+
 ### Introduction
 Social media plays an important role in disseminating Covid-19 related information. However, despite its importance, there aren't strong controls on what information gets spread. The goal of our project is to create a machine learning model to detect Covid-19 related “fake news”. This includes information that is factually inaccurate or even dangerous.
 
