@@ -8,7 +8,7 @@ Social media plays an important role in disseminating Covid-19 related informati
 
 Data scientists have created fake news classifiers in the past, but we are not aware at any efforts to classify information related specifically to Covid-19. Creating a classifier tailored to check social media posts about this topic will be extremely helpful in preventing the spread of healthcare misinformation online.
 
-### Methods
+### Unsupervised Methods
 In the initial phase of the project, we focused on exploring the dataset using unsupervised techniques. This allows us to have a better understanding of our data, and to gain insights that may be useful when we proceed to the supervised learning step.
 
 To obtain our initial dataset, we downloaded a set of Covid-19 related tweets which had already been labeled as true or false (decribed [here](https://github.com/cuilimeng/CoAID)). Using this dataset was more difficult than expected, since it only included tweet id's (reference numbers to an actual tweet). As a result, we had to create a web-scraper to search Twitter for the tweet itself. Further, some tweets in the dataset had been deleted, requiring us to exclude those from the final dataset. After this initial data-cleaning stage, we were left with 1092 tweets to analyze. A simple analysis of the class imbalance showed that 12% were fake news, as compared to the 88% that were true.
@@ -64,7 +64,7 @@ We also want to explore the semantic associations of each cluster. This is shown
 
 As expected the topics covered by the each DBSCAN cluster seem to closely mirror the topics covered by the ground truth groupings.
 
-### Results Summary
+### Unsupervised Results Summary
 
 In the unsupervised portion of this project, we were able to complete all of our original goals and gain deep insights about the nature of our dataset. The three main tasks completed include:
 - successful production of numeric vectors from text using TF-IDF
@@ -76,6 +76,20 @@ Crucially, we met our goal for the unsupervised learning phase by successfully p
 Looking forward, we can see that, while the supervised learning effort will likely produce useful results, the visual ambiguity in parts of the 2D PCA plot of ground truth labels may indicates that the system will have difficulty differentiating between true and false in some cases. This may help shape usage policy for our final classifier. We advocate it's use solely to flag potentially misleading tweets, which are then sent to a human for manual review. This approach can help avoid unnecesarry censorship.
 
 As a check-for-success in the supervised learning portion of this assignment, we intend on producing a classifier that accurately differentiates between fake and true news, and producing metrics for its performance.
+
+### Supervised Methods
+
+Our dataset was initially comprised of about 80% real and 20% fake tweets. However, running a classifier on such an imbalanced dataset would cause the models to classify a disproportionate number of tweets as real. To resolve this issue, we oversampled the fake data and create a new dataset containing 50% real tweets and 50% fake. We then used the method of stratified sampling to make sure both training and testing datasets contained equal proportions of real to fake tweets.
+
+To determine which classifier worked well for our dataset, we trained multiple classifiers which we believed would perform the best and compared their performances. We settled on using Logistic Regression, Linear SVM, Kernel SVM, Random Forest, Neural Net, & Naïve Bayes, and we tweaked the hyper-parameters for each individual model until the peak f1-score had been reached.
+
+### Supervised Results Summary
+
+The three best performing models were Logistic Regression, Neural Net, and Random Forest. Below, you can see the performance summary and confusion matrix of each model. The precision and recall of the Neural Network was slightly higher than the other two.
+
+Here we can see a 2D visualization of the classification results. We graph each data point using the normalized first and second PCA components of that point, and colorize the point based on the assigned class. The left graph shows actual true/false labels, and the right graph shows predicted labels. The graphs show an obvious visual similarity, reflecting the high performance of the Neural Net.
+
+Below, we graph the correlation between false tweets and with the words within those tweets. This visualization gives us a feeling for the topics discussed within misleading tweets. The left graph shows correlations for actual fake tweets, and the right graph shows correlations for tweets we predict to be fake. We can see that the topics discussed in *actual* fake tweets are very similar to the topics discussed in tweets we predicted to be fake.
 
 ### Discussion
 
