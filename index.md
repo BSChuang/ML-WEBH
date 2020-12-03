@@ -97,9 +97,7 @@ Below, we graph the correlation between fake tweets and the words within those t
 
 ### Discussion
 
-Ideally, our project will successfully categorize posts as ‘fake news’ or ‘not fake news’. If we are successful, our project could be used to flag fake news posts on social media for review. This would involve some room for error, as fake/real news can use similar phrases. Human review would allow for false positives without immediately taking down real posts. Finally, our model would help control the spread of fake news and misinformation on social media sites, improving trust by the user. 
-
-Our main outcome this phase was the production of vectors from our dataset, a process which included some data cleaning and dimensionality reduction using PCA. We found success with the K-Means and DBSCAN algorithm, which may also be useful for exploring our results during supervised learning portion of this project. In this unsupervised learning portion, the bar charts we generated helped us understand what features are most significant in our dataset. In the next phase of our project, we will use similar bar graphs to visualize the output of our classifier. We also plan on training our classifiers on the output of our PCA implementation. We will also investigate the SVM and random forest algorithms for classification.
+Through the use of unsupervised and supervised machine learning algorithms, our project can reliably identify fake news with a cross validated f1-score of 0.93. With this success, the results of our project could be used to flag fake news posts on social media for further review. This involves some room for error, as our implementation isn’t 100% accurate at labeling fake/real posts. To fully utilize these predictions, we recommend adding in an element of human review to allow for false positives without immediately taking down real posts. Through this system of flagging and reviewing, our model can be used to help control the spread of fake news and misinformation surrounding Covid-19 on social media sites and improve trust by the user.
 
 ### References
 How Facebook Is Using AI to Fight COVID-19 Misinformation,
