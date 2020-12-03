@@ -99,6 +99,8 @@ Below, we graph the correlation between fake tweets and the words within those t
 
 Through the use of unsupervised and supervised machine learning algorithms, our project can reliably identify fake news with a cross validated f1-score of 0.93. With this success, the results of our project could be used to flag fake news posts on social media for further review. This involves some room for error, as our implementation isn’t 100% accurate at labeling fake/real posts. To fully utilize these predictions, we recommend adding in an element of human review to allow for false positives without immediately taking down real posts. Through this system of flagging and reviewing, our model can be used to help control the spread of fake news and misinformation surrounding Covid-19 on social media sites and improve trust by the user.
 
+We hope the results of this project inspire more research on the detection of Covid-specific fake news. Social media platforms can implement similar techniques to flag posts for review, with the ultimate goal of reducing the spread of misinformation surrounding the coronavirus pandemic.
+
 ### References
 How Facebook Is Using AI to Fight COVID-19 Misinformation,
 Tekla S. Perry,
