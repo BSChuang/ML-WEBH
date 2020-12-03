@@ -90,9 +90,9 @@ The three best performing models were Logistic Regression, Neural Net, and Rando
 
 Here we can see a 2D visualization of the classification results. 
 <img src="images/pca_visualization.png" />
-We graph each data point using the normalized first and second PCA components of that point, and colorize the point based on the assigned class. The left graph shows actual true/false labels, and the right graph shows predicted labels. The graphs show an obvious visual similarity, reflecting the high performance of the Neural Net.
+We graph each data point using the normalized first and second PCA components of that point, and colorize the point based on the assigned class. The left graph shows *actual* true/false labels, and the right graph shows *predicted* labels. The graphs show an obvious visual similarity, reflecting the high performance of the Neural Net.
 
-Below, we graph the correlation between false tweets and with the words within those tweets. This visualization gives us a feeling for the topics discussed within misleading tweets. The left graph shows correlations for actual fake tweets, and the right graph shows correlations for tweets we predict to be fake. We can see that the topics discussed in *actual* fake tweets are very similar to the topics discussed in tweets we predicted to be fake.
+Below, we graph the correlation between false tweets and the words within those tweets. This visualization gives us a feeling for the topics discussed within misleading tweets. The left graph shows correlations for actual fake tweets, and the right graph shows correlations for tweets we predict to be fake. We can see that the topics discussed in *actual* fake tweets are very similar to the topics discussed in tweets we *predicted* to be fake.
 <img src="images/semantic_visualization.png" />
 
 ### Discussion
