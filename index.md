@@ -89,11 +89,11 @@ The three best performing models were Logistic Regression, Neural Net, and Rando
 <img src="images/confusion_matrices_NEW.png" />
 
 To visualize the Random Forest's performance, we can view a 2D representation of the classification results.
-<img src="images/pca_visualization.png" />
+<img src="images/pca_NEW.png" />
 We graphed each data point using the normalized first and second PCA components of that point, and colorized the point based on the assigned class. The left graph shows *actual* true/false labels, and the right graph shows *predicted* labels. The graphs show an obvious visual similarity, reflecting the high performance of the Random Forest.
 
 Below, we graph the correlation between fake tweets and the words within those tweets. This visualization gives us a feeling for the topics discussed within these misleading tweets. The left graph shows correlations for actual fake tweets, and the right graph shows correlations for tweets we predict to be fake. We can see that the topics discussed in *actual* fake tweets are very similar to the topics discussed in tweets we *predicted* to be fake.
-<img src="images/semantic_visualization.PNG" />
+<img src="images/semantic_NEW.png" />
 
 ### Discussion
 
