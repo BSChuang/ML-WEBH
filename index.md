@@ -86,7 +86,7 @@ To determine which classifiers worked best for our dataset, we trained multiple 
 ### Supervised Results Summary
 
 The three best performing models were Logistic Regression, Neural Net, and Random Forest. Below, you can see the performance summary and confusion matrix of each model. Most of the performance scores were very similar, but the fake-tweet recall of the Random Forest was slightly higher than the other models, and therefore we concluded the Random Forest implementation was the best choice of prediction model.
-<img src="images/confusion_matrices_NEW.PNG" />
+<img src="images/confusion_matrices_NEW.png" />
 
 To visualize the Random Forest's performance, we can view a 2D representation of the classification results.
 <img src="images/pca_visualization.png" />
