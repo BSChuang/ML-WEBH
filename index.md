@@ -85,15 +85,15 @@ To determine which classifiers worked best for our dataset, we trained multiple 
 
 ### Supervised Results Summary
 
-The three best performing models were Logistic Regression, Neural Net, and Random Forest. Below, you can see the performance summary and confusion matrix of each model. The precision and recall of the Neural Net was slightly higher than the other two, and therefore we concluded the Neural Net implementation was the best choice of prediction model.
-<img src="images/confusion_matrices.PNG" />
+The three best performing models were Logistic Regression, Neural Net, and Random Forest. Below, you can see the performance summary and confusion matrix of each model. Most of the performance scores were very similar, but the fake-tweet recall of the Random Forest was slightly higher than the other models, and therefore we concluded the Random Forest implementation was the best choice of prediction model.
+<img src="images/confusion_matrices_new.PNG" />
 
-To visualize the Neural Net's performance, we can view a 2D representation of the classification results.
-<img src="images/pca_visualization.png" />
-We graphed each data point using the normalized first and second PCA components of that point, and colorized the point based on the assigned class. The left graph shows *actual* true/false labels, and the right graph shows *predicted* labels. The graphs show an obvious visual similarity, reflecting the high performance of the Neural Net.
+To visualize the Random Forest's performance, we can view a 2D representation of the classification results.
+<img src="images/pca_visualization_new.png" />
+We graphed each data point using the normalized first and second PCA components of that point, and colorized the point based on the assigned class. The left graph shows *actual* true/false labels, and the right graph shows *predicted* labels. The graphs show an obvious visual similarity, reflecting the high performance of the Random Forest.
 
 Below, we graph the correlation between fake tweets and the words within those tweets. This visualization gives us a feeling for the topics discussed within these misleading tweets. The left graph shows correlations for actual fake tweets, and the right graph shows correlations for tweets we predict to be fake. We can see that the topics discussed in *actual* fake tweets are very similar to the topics discussed in tweets we *predicted* to be fake.
-<img src="images/semantic_visualization.PNG" />
+<img src="images/semantic_visualization_new.PNG" />
 
 ### Discussion
 
