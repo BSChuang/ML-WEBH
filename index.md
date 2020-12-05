@@ -81,19 +81,19 @@ As a check-for-success in the supervised learning portion of this assignment, we
 
 Our dataset was initially comprised of about 80% real and 20% fake tweets. However, running a classifier on such an imbalanced dataset would cause the models to classify a disproportionate number of tweets as real. To resolve this issue, we oversampled the fake data and created a new dataset containing 50% real tweets and 50% fake. We then utilized stratified sampling to make sure both training and testing datasets contained an equal distribution of real and fake tweets.
 
-To determine which classifiers worked best for our dataset, we trained multiple classifiers which we believed would perform well and compared their performances. We settled on experimenting with Logistic Regression, Linear SVM, Kernel SVM, Random Forest, Neural Net, & Naïve Bayes. To achieve optimal performance for each classifier, we tweaked the hyper-parameters for each individual model until the peak f1-score had been reached.
+To determine which classifiers worked best for our dataset, we trained multiple classifiers which we believed would perform well and compared their performances. We settled on experimenting with Logistic Regression, Linear SVM, Kernel SVM, Random Forest, Neural Net, & Naïve Bayes. To achieve optimal performance, an individualized grid search was performed on each classifier to tune its hyperparameters. For hyperparameters of varying magnitude, a form of exponential search was utilized to find a balance between search range and time complexity. The tuned classifiers all resulted in higher f1-scores than their default counterparts. 
 
 ### Supervised Results Summary
 
 The three best performing models were Logistic Regression, Neural Net, and Random Forest. Below, you can see the performance summary and confusion matrix of each model. The precision and recall of the Neural Net was slightly higher than the other two, and therefore we concluded the Neural Net implementation was the best choice of prediction model.
-<img src="images/confusion_matrices.png" />
+<img src="images/confusion_matrices.PNG" />
 
 To visualize the Neural Net's performance, we can view a 2D representation of the classification results.
 <img src="images/pca_visualization.png" />
 We graphed each data point using the normalized first and second PCA components of that point, and colorized the point based on the assigned class. The left graph shows *actual* true/false labels, and the right graph shows *predicted* labels. The graphs show an obvious visual similarity, reflecting the high performance of the Neural Net.
 
 Below, we graph the correlation between fake tweets and the words within those tweets. This visualization gives us a feeling for the topics discussed within these misleading tweets. The left graph shows correlations for actual fake tweets, and the right graph shows correlations for tweets we predict to be fake. We can see that the topics discussed in *actual* fake tweets are very similar to the topics discussed in tweets we *predicted* to be fake.
-<img src="images/semantic_visualization.png" />
+<img src="images/semantic_visualization.PNG" />
 
 ### Discussion
 
