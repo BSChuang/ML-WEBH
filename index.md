@@ -5,12 +5,12 @@
 <img src="images/workflow.png" />
 </p>
 
-### Introduction
+## Introduction
 Social media plays an important role in disseminating Covid-19 related information. However, despite its importance, there aren't strong controls on what information gets spread. The goal of our project is to create a machine learning model to detect Covid-19 related “fake news”. This includes information that is factually inaccurate or even dangerous.
 
 Data scientists have created fake news classifiers in the past, but we are not aware at any efforts to classify information related specifically to Covid-19. Creating a classifier tailored to check social media posts about this topic will be extremely helpful in preventing the spread of healthcare misinformation online.
 
-### Unsupervised Methods
+## Unsupervised Methods
 In the initial phase of the project, we focused on exploring the dataset using unsupervised techniques. This allows us to have a better understanding of our data, and to gain insights that may be useful when we proceed to the supervised learning step.
 
 To obtain our initial dataset, we downloaded a set of Covid-19 related tweets which had already been labeled as true or false (decribed [here](https://github.com/cuilimeng/CoAID)). Using this dataset was more difficult than expected, since it only included tweet id's (reference numbers to an actual tweet). As a result, we had to create a web-scraper to search Twitter for the tweet itself. Further, some tweets in the dataset had been deleted, requiring us to exclude those from the final dataset. After this initial data-cleaning stage, we were left with 1092 tweets to analyze. A simple analysis of the class imbalance showed that 12% were fake news, as compared to the 88% that were true. We resolved this imbalance by oversampling the fake datapoints to create an artificially balanced dataset.
@@ -46,7 +46,7 @@ After the earlier dimensionality reduction step, we also wanted to apply unsuper
 
 As can be seen, the decrease is fairly linear with respect to increasing cluster number. This may indicate that K-Means is not the best approach for this dataset. Likely, this stems from the shape of the data, which appears to have one core circular region, and two oblong outer regions. Since K-Means is best suited to circularly clustered data, it likely cannot properly cluster the two oblong regions. Nonetheless, we were curious about further exploring the K-Means results. We performed K-Means, arbitrarily configured to find 6 clusters. We explored the results through the same PCA and word-correlation techniques as earlier.
 
-The two-dimensional PCA plots for both 2-cluster and 6-cluster assignments can be seen below.
+The two-dimensional PCA plot for the 6-cluster assignments can be seen below.
 
 <p align="center">
 <img src="images/kmeans_pca.png" />
@@ -58,7 +58,7 @@ It's notable that these cluster assignments are visually quite different from th
 <img src="images/kmeans_words_6.png" />
 </p>
 
-The 6-cluster K-Means results are interesting because each cluster seems to represent a semantically distinct topic. For instance, it appears that the 6th cluster is distinctly related to 5G mobile technology. This likely stems from tweets that promote conspiracies linking 5G with covid-19.
+The 6-cluster K-Means results are interesting because each cluster seems to represent a semantically distinct topic. For instance, it appears that the cluster __F__ is distinctly related to 5G mobile technology. This likely stems from tweets that promote conspiracies linking 5G with covid-19.
 
 In addition to K-Means clustering, we also we felt that DBSCAN clustering may produce interesting results. DBSCAN has two main hyperparameters: epsilon and min_samples. Epsilon controls how "far out" DBSCAN can look from an existing cluster assignment in order to claim an additional point. Min_samples controls the minimum number of samples required for a cluster to be created. We tuned these hyperparameters using grid search. Specifically, we sought to maximize classification f1-score relative to the ground truth. We performed this grid search on the artificially balanced dataset and got a maximum f1-score of 0.53. While DBSCAN was able to classify datapoints accurately more often than chance, the low number indicates that it's ability to do so is limited.
 
@@ -76,7 +76,7 @@ We also want to explore the semantic associations of each cluster. This is shown
 <img src="images/dbscan_words.png" />
 </p>
 
-We again see a close connection between DBSCAN cluster assignments and ground truth values. In particular, the word correlations for cluster 1 closely resemble the word correlations for false tweets.
+We again see a close connection between DBSCAN cluster assignments and ground truth values. In particular, the word correlations for cluster __B__ closely resemble the word correlations for false tweets.
 
 ### Unsupervised Results Summary
 
@@ -91,15 +91,15 @@ Looking forward, we can see that, while the supervised learning effort will like
 
 As a check-for-success in the supervised learning portion of this assignment, we intend on producing a classifier that accurately differentiates between fake and true news, and producing metrics for its performance.
 
-### Supervised Methods
+## Supervised Methods
 
-Our dataset was initially comprised of about 80% real and 20% fake tweets. However, running a classifier on such an imbalanced dataset would cause the models to classify a disproportionate number of tweets as real. To resolve this issue, we oversampled the fake data and created a new dataset containing 50% real tweets and 50% fake. We then utilized stratified sampling to make sure both training and testing datasets contained an equal distribution of real and fake tweets.
+Our dataset was initially comprised of 88% real and 12% fake tweets. However, running a classifier on such an imbalanced dataset would cause the models to classify a disproportionate number of tweets as real. To resolve this issue, we oversampled the fake data and created a new dataset containing 50% real tweets and 50% fake. We then utilized stratified sampling to make sure both training and testing datasets contained an equal distribution of real and fake tweets.
 
-To determine which classifiers worked best for our dataset, we trained multiple classifiers which we believed would perform well and compared their performances. We settled on experimenting with Logistic Regression, Linear SVM, Kernel SVM, Random Forest, Neural Net, & Naïve Bayes. To achieve optimal performance, an individualized grid search was performed on each classifier to tune its hyperparameters. For hyperparameters of varying magnitude, a form of exponential search was utilized to find a balance between search range and time complexity. The tuned classifiers all resulted in higher f1-scores than their default counterparts. 
+To determine which classifiers worked best for our dataset, we trained multiple classifiers which we believed would perform well and compared their performances. We experimented with Logistic Regression, Linear SVM, Kernel SVM, Random Forest, Neural Net, & Naïve Bayes. To achieve optimal performance, an individualized grid search was performed on each classifier to tune its hyperparameters. For hyperparameters of varying magnitude, a form of exponential search was utilized to find a balance between search range and time complexity. The tuned classifiers all resulted in higher f1-scores than their default counterparts. 
 
 ### Supervised Results Summary
 
-The three best performing models were Logistic Regression, Neural Net, and Random Forest. Below, you can see the performance summary and confusion matrix of each model. Most of the performance scores were very similar, but the fake-tweet recall of the Random Forest was slightly higher than the other models, and therefore we concluded the Random Forest implementation was the best choice of prediction model.
+The three best performing models were Logistic Regression, Neural Net, and Random Forest. Below, you can see the performance summary and confusion matrix of each model. Most of the performance scores were very similar, but the fake-tweet recall of the Random Forest was slightly higher than the other models. We therefore concluded that the Random Forest model was the best predictor for our data.
 
 <p align="center">
 <img src="images/confusion_matrices_NEW.png" />
