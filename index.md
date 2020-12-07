@@ -1,7 +1,9 @@
 ## Exposing Fake COVID-19 News — Group 34
 
-### Created By:
+### Created By
+<p align="center">
 Ben Chuang · Hannah Donahue · Will Hunter · Ethan Roland
+</p>
 
 ### Summary Figure
 <p align="center">
