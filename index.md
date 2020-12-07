@@ -147,8 +147,8 @@ Limeng Cui, Dongwon Lee,
 [https://arxiv.org/pdf/2006.00885.pdf](https://arxiv.org/pdf/2006.00885.pdf)
 
 ### Links
-Unsupervised Colab: [https://colab.research.google.com/drive/1ZzHke7KS7PVrD3Q1yTxCcyKJLDQDFHdr?usp=sharing](https://colab.research.google.com/drive/1ZzHke7KS7PVrD3Q1yTxCcyKJLDQDFHdr?usp=sharing)
+Unsupervised Colab: [https://colab.research.google.com/drive/1ZzHke7KS7PVrD3Q1yTxCcyKJLDQDFHdr](https://colab.research.google.com/drive/1ZzHke7KS7PVrD3Q1yTxCcyKJLDQDFHdr)
 
-Supervised Colab: [https://colab.research.google.com/drive/1KjQYkK-9KcYAwyQ_9UF8l5KytRyavnmd#scrollTo=d3-M9VoFVVgs](https://colab.research.google.com/drive/1KjQYkK-9KcYAwyQ_9UF8l5KytRyavnmd#scrollTo=d3-M9VoFVVgs)
+Supervised Colab: [https://colab.research.google.com/drive/1KjQYkK-9KcYAwyQ_9UF8l5KytRyavnmd](https://colab.research.google.com/drive/1KjQYkK-9KcYAwyQ_9UF8l5KytRyavnmd)
 
 Final Report Video: [https://www.youtube.com/watch?v=xXQwCKvHHhI](https://www.youtube.com/watch?v=xXQwCKvHHhI)
