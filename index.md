@@ -1,7 +1,9 @@
 ## Exposing Fake COVID-19 News
 
 ### Summary Figure
+<p align="center">
 <img src="images/workflow.png" />
+</p>
 
 ### Introduction
 Social media plays an important role in disseminating Covid-19 related information. However, despite its importance, there aren't strong controls on what information gets spread. The goal of our project is to create a machine learning model to detect Covid-19 related “fake news”. This includes information that is factually inaccurate or even dangerous.
@@ -11,57 +13,70 @@ Data scientists have created fake news classifiers in the past, but we are not a
 ### Unsupervised Methods
 In the initial phase of the project, we focused on exploring the dataset using unsupervised techniques. This allows us to have a better understanding of our data, and to gain insights that may be useful when we proceed to the supervised learning step.
 
-To obtain our initial dataset, we downloaded a set of Covid-19 related tweets which had already been labeled as true or false (decribed [here](https://github.com/cuilimeng/CoAID)). Using this dataset was more difficult than expected, since it only included tweet id's (reference numbers to an actual tweet). As a result, we had to create a web-scraper to search Twitter for the tweet itself. Further, some tweets in the dataset had been deleted, requiring us to exclude those from the final dataset. After this initial data-cleaning stage, we were left with 1092 tweets to analyze. A simple analysis of the class imbalance showed that 12% were fake news, as compared to the 88% that were true.
+To obtain our initial dataset, we downloaded a set of Covid-19 related tweets which had already been labeled as true or false (decribed [here](https://github.com/cuilimeng/CoAID)). Using this dataset was more difficult than expected, since it only included tweet id's (reference numbers to an actual tweet). As a result, we had to create a web-scraper to search Twitter for the tweet itself. Further, some tweets in the dataset had been deleted, requiring us to exclude those from the final dataset. After this initial data-cleaning stage, we were left with 1092 tweets to analyze. A simple analysis of the class imbalance showed that 12% were fake news, as compared to the 88% that were true. We resolved this imbalance by oversampling the fake datapoints to create an artificially balanced dataset.
 
 We next performed a vectorization step to convert tweet text into numeric vectors. We used the Term Frequency-Inverse Document Frequency (TF-IDF) algorithm as our vectorization method. Every unique unigram or bigram within the input text corpus became a distinct feature within our dataset. The value of that feature for a given tweet is dependent on the frequency of the word(s) corresponding to that feature within the tweet. This step also involved additional data cleaning. Here, we dropped all columns that were composed of English "stop words" - which are simple words like "the" or "is" that tend not to carry significant semantic information.
 
 At the end of the vectorization step, our data contained 702 dimensions. We used PCA to create a representation of this data with a lower dimensionality. Specifically, we chose the minimum number of PCA components that would capture 99% of the variance within the dataset. We found that the original 702 dimensional representation could be reduced to only the first 314 PCA dimensions, while still explaining 99% of the variance. A visualization of the cumulative variance explained by each PCA dimension is shown below.
 
+<p align="center">
 <img src="images/explained_variance.png" />
+</p>
 
 In order to gain an intuitive understanding of the dataset, we attempted to visualize the pre-existing label assignments. We employed two techniques. The first made use of a two-dimensional plot, where the first and second PCA dimensions are shown on the X and Y axis, respectively. Each tweet within the dataset is graphed on this plot, and colored according to it's truth value. This plot is shown below, with true tweets in green, and false tweets in red.
 
+<p align="center">
 <img src="images/default_pca.png" />
 
 We were encouraged by this visualization, since it appears that each label forms fairly distinctive groups. This portends well for future supervised learning / classification efforts. 
 
 We also wanted to gain an understanding of the semantic differences between true and false tweets. To do this, we calculated the correlation between each class label, and all the single-word tf-idf features. We then sorted these tf-idf features based off of the correlation. In our visualization, we chose the top 10 mostly strongly correlated words for each class, and plotted their correlation strengths along the y-axis of a bar graph. This plot can be seen below.
 
+<p align="center">
 <img src="images/default_words.png" />
+
 
 This visualization allows us to get an inuitive understanding of the topics associated with each label. For instance, it appears that true tweets tend to focus on topics related to disease prevention and "evidence", while false tweets tend to contain comparisons to the common flu, and may contain referenes to political leaders.
 
 After the earlier dimensionality reduction step, we also wanted to apply unsupervised clustering techniques to our data. We first attempted to employ K-Means clustering. In order to determine the proper number of clusters, we attempted to apply the elbow method of optimization. A plot comparing Within-Cluster-Sum-Of-Squares (WCSS) to the number of clusters is shown below.
 
+<p align="center">
 <img src="images/elbow_method.png" />
+</p>
 
 As can be seen, the decrease is fairly linear with respect to increasing cluster number. This may indicate that K-Means is not the best approach for this dataset. Likely, this stems from the shape of the data, which appears to have one core circular region, and two oblong outer regions. Since K-Means is best suited to circularly clustered data, it likely cannot properly cluster the two oblong regions. Nonetheless, we were curious about further exploring the K-Means results. We performed K-Means, arbitrarily configured to find 6 clusters. We explored the results through the same PCA and word-correlation techniques as earlier.
 
 The two-dimensional PCA plots for both 2-cluster and 6-cluster assignments can be seen below.
 
+<p align="center">
 <img src="images/kmeans_pca.png" />
+</p>
 
-It's notable that these cluster assignments are visually quite different from the ground truth labels, likely indicating that the clusters produced by K-Means have created divisions of the original dataset that are semantically different than the ground-truth true/false division. We can explore the semantic content of each cluster using the word correlation technique from earlier. For each of understanding, we omit the bar charts and instead show the most correlated words in a tabular format.
+It's notable that these cluster assignments are visually quite different from the ground truth labels, likely indicating that the clusters produced by K-Means have created divisions of the original dataset that are semantically different than the ground-truth true/false division. We can explore the semantic content of each cluster using the word correlation technique from earlier. For ease of understanding, we omit the bar charts and instead show the most correlated words in a tabular format.
 
+<p align="center">
 <img src="images/kmeans_words_6.png" />
+</p>
 
-There are some notable takeaways from these graphs. Although the 2D plot of the 2-cluster K-Means result is quite different from the 2D plot of the ground truth, the semantic visualization shown above surprisingly seems to indicate that the topics contained in the 2-cluster K-Means class assignments seem to closely mirror the topics contained by the ground truth labels. We can see that cluster __0__ contains similar words to those contained by the "Fake" label, as demonstrated by words like "just" and "flu". Similarly, we can see that cluster __1__ contains similar words to those contained by the "True" label, as demonstrated by words like "spread" and "prevent".
+The 6-cluster K-Means results are interesting because each cluster seems to represent a semantically distinct topic. For instance, it appears that the 6th cluster is distinctly related to 5G mobile technology. This likely stems from tweets that promote conspiracies linking 5G with covid-19.
 
-Additionally, the 6-cluster K-Means results are interesting because each cluster seems to represent a semantically distinct topic. For instance, it appears that cluster __5__ is distinctly related to 5G mobile technology. This likely stems from tweets that promote conspiracies linking 5G with covid-19.
+In addition to K-Means clustering, we also we felt that DBSCAN clustering may produce interesting results. DBSCAN has two main hyperparameters: epsilon and min_samples. Epsilon controls how "far out" DBSCAN can look from an existing cluster assignment in order to claim an additional point. Min_samples controls the minimum number of samples required for a cluster to be created. We tuned these hyperparameters using grid search. Specifically, we sought to maximize classification f1-score relative to the ground truth. We performed this grid search on the artificially balanced dataset and got a maximum f1-score of 0.53. While DBSCAN was able to classify datapoints accurately more often than chance, the low number indicates that it's ability to do so is limited.
 
-In addition to K-Means clustering, we also we felt that DBSCAN clustering may produce interesting results. DBSCAN has two main hyperparameters: epsilon and min_samples. Epsilon controls how "far out" DBSCAN can look from an existing cluster assignment in order to claim an additional point. Min_samples controls the minimum number of samples required for a cluster to be created. We tuned these hyperparameters using grid search. Specifically, we sought to maximize classification precision relative to the ground truth. This resulted in a precision of 86.9% when using epsilon = 32 and min_samples = 16.
+We visualize our clustering results using the same PCA method as before. The 2D PCA plot of the DBSCAN cluster assignments is shown below.
 
-As with K-Means, we want to visualize our clustering results. The 2D PCA plot of the DBSCAN cluster assignments is shown below.
-
+<p align="center">
 <img src="images/dbscan_pca.png" />
+</p>
 
-Note that this plot has far more visual similarity to the plot of the ground truth labels, relative to the clustering produced by K-Means.
+Note that this plot shows significant visual similarity to the plot of the ground truth labels, especially with respect to the cluster assignments within the oblong regions.
 
 We also want to explore the semantic associations of each cluster. This is shown in the word correlation graphs below.
 
+<p align="center">
 <img src="images/dbscan_words.png" />
+</p>
 
-As expected the topics covered by the each DBSCAN cluster seem to closely mirror the topics covered by the ground truth groupings.
+We again see a close connection between DBSCAN cluster assignments and ground truth values. In particular, the word correlations for cluster 1 closely resemble the word correlations for false tweets.
 
 ### Unsupervised Results Summary
 
@@ -85,14 +100,24 @@ To determine which classifiers worked best for our dataset, we trained multiple 
 ### Supervised Results Summary
 
 The three best performing models were Logistic Regression, Neural Net, and Random Forest. Below, you can see the performance summary and confusion matrix of each model. Most of the performance scores were very similar, but the fake-tweet recall of the Random Forest was slightly higher than the other models, and therefore we concluded the Random Forest implementation was the best choice of prediction model.
+
+<p align="center">
 <img src="images/confusion_matrices_NEW.png" />
+</p>
 
 To visualize the Random Forest's performance, we can view a 2D representation of the classification results.
+
+<p align="center">
 <img src="images/pca_NEW.png" />
+</p>
+
 We graphed each data point using the normalized first and second PCA components of that point, and colorized the point based on the assigned class. The left graph shows *actual* true/false labels, and the right graph shows *predicted* labels. The graphs show an obvious visual similarity, reflecting the high performance of the Random Forest.
 
 Below, we graph the correlation between fake tweets and the words within those tweets. This visualization gives us a feeling for the topics discussed within these misleading tweets. The left graph shows correlations for actual fake tweets, and the right graph shows correlations for tweets we predict to be fake. We can see that the topics discussed in *actual* fake tweets are very similar to the topics discussed in tweets we *predicted* to be fake.
+
+<p align="center">
 <img src="images/semantic_NEW.png" />
+</p>
 
 ### Discussion
 
