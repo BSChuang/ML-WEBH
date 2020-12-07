@@ -94,17 +94,21 @@ As a check-for-success in the supervised learning portion of this assignment, we
 
 ## Supervised Methods
 
-Our dataset was initially comprised of 88% real and 12% fake tweets. However, running a classifier on such an imbalanced dataset would cause the models to classify a disproportionate number of tweets as real. To resolve this issue, we oversampled the fake data and created a new dataset containing 50% real tweets and 50% fake. We then utilized stratified sampling to make sure both training and testing datasets contained an equal distribution of real and fake tweets.
+Our results from the unsupervised portion were critical in informing our choices during the supervised portion of this project.
 
-To determine which classifiers worked best for our dataset, we trained multiple classifiers which we believed would perform well and compared their performances. We experimented with Logistic Regression, Linear SVM, Kernel SVM, Random Forest, Neural Net, & Naïve Bayes. To achieve optimal performance, an individualized grid search was performed on each classifier to tune its hyperparameters. For hyperparameters of varying magnitude, a form of exponential search was utilized to find a balance between search range and time complexity. The tuned classifiers all resulted in higher f1-scores than their default counterparts. 
+During the unsupervised phase of the project, we discovered that our dataset is comprised of 88% real and 12% fake tweets. However, running a classifier on such an imbalanced dataset would cause the models to classify a disproportionate number of tweets as real. To resolve this issue, we oversampled the fake data and created a new dataset containing 50% real tweets and 50% fake. We then utilized stratified sampling to make sure both training and testing datasets contained an equal distribution of real and fake tweets.
+
+To determine which classifiers worked best for our dataset, we trained multiple classifiers which we believed would perform well and compared their performances. We experimented with Logistic Regression, Linear SVM, Kernel SVM, Random Forest, Neural Net, & Naïve Bayes. We trained the models using the PCA output we produced during the unsupervised learning phase. To achieve optimal performance, an individualized grid search was performed on each classifier to tune its hyperparameters in order to optimize the cross validated f1-score. For hyperparameters of varying magnitude, a form of exponential search was utilized to find a balance between search range and time complexity. The tuned classifiers all resulted in higher f1-scores than their default counterparts. 
 
 ### Supervised Results Summary
 
-The three best performing models were Logistic Regression, Neural Net, and Random Forest. Below, you can see the performance summary and confusion matrix of each model. Most of the performance scores were very similar, but the fake-tweet recall of the Random Forest was slightly higher than the other models. We therefore concluded that the Random Forest model was the best predictor for our data.
+The three best performing models were Logistic Regression, Neural Net, and Random Forest. Below, you can see the cross validated performance summary and confusion matrix of each model. Most of the performance scores were very similar, but the fake-tweet recall of the Random Forest was slightly higher than the other models. The cross validated f1-score of the Random Forest model was 0.93. We therefore concluded that the Random Forest model was the best predictor for our data.
 
 <p align="center">
 <img src="images/confusion_matrices_NEW.png" />
 </p>
+
+In general, we were quite satisfied with the performance of all classifiers. Even a classifier that depends on linear separability, like Linear SVM, still performed quite well. This may be a reflection of the stark geometric distinction between the true and false labels, as visible in the ground truth PCA plot. The fact that the input features were the output of running Principle Component Analysis may have confered a unique advantage to the Random Forest Classifier, explaining its high performance. Decision tree based methods can only find decision boundaries along a single feature. Because PCA outputs features that are all orthogonal to each other, this orthogonality may increase the quality of the decision boundaries identified by Random Forest.
 
 To visualize the Random Forest's performance, we can view a 2D representation of the classification results.
 
