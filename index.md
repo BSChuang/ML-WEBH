@@ -35,15 +35,14 @@ After the earlier dimensionality reduction step, we also wanted to apply unsuper
 
 <img src="images/elbow_method.png" />
 
-As can be seen, the decrease is fairly linear with respect to increasing cluster number. This may indicate that K-Means is not the best approach for this dataset. Likely, this stems from the shape of the data, which appears to have one core circular region, and two oblong outer regions. Since K-Means is best suited to circularly clustered data, it likely cannot properly cluster the two oblong regions. Nonetheless, we were curious about further exploring the K-Means results. We performed K-Means with both 2 and 6 clusters. We explored these results through the same PCA and word-correlation plots as earlier.
+As can be seen, the decrease is fairly linear with respect to increasing cluster number. This may indicate that K-Means is not the best approach for this dataset. Likely, this stems from the shape of the data, which appears to have one core circular region, and two oblong outer regions. Since K-Means is best suited to circularly clustered data, it likely cannot properly cluster the two oblong regions. Nonetheless, we were curious about further exploring the K-Means results. We performed K-Means, arbitrarily configured to find 6 clusters. We explored the results through the same PCA and word-correlation techniques as earlier.
 
 The two-dimensional PCA plots for both 2-cluster and 6-cluster assignments can be seen below.
 
 <img src="images/kmeans_pca.png" />
 
-It's notable that these cluster assignments are visually quite different from the ground truth labels, likely indicating that the clusters produced by K-Means have created divisions of the original dataset that are semantically different than the ground-truth true/false division. We can visualize the semantic content of each cluster using the word correlation technique from earlier. The relevant bar charts are shown below.
+It's notable that these cluster assignments are visually quite different from the ground truth labels, likely indicating that the clusters produced by K-Means have created divisions of the original dataset that are semantically different than the ground-truth true/false division. We can explore the semantic content of each cluster using the word correlation technique from earlier. For each of understanding, we omit the bar charts and instead show the most correlated words in a tabular format.
 
-<img src="images/kmeans_words_2.png" />
 <img src="images/kmeans_words_6.png" />
 
 There are some notable takeaways from these graphs. Although the 2D plot of the 2-cluster K-Means result is quite different from the 2D plot of the ground truth, the semantic visualization shown above surprisingly seems to indicate that the topics contained in the 2-cluster K-Means class assignments seem to closely mirror the topics contained by the ground truth labels. We can see that cluster __0__ contains similar words to those contained by the "Fake" label, as demonstrated by words like "just" and "flu". Similarly, we can see that cluster __1__ contains similar words to those contained by the "True" label, as demonstrated by words like "spread" and "prevent".
