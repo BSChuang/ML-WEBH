@@ -27,6 +27,7 @@ In order to gain an intuitive understanding of the dataset, we attempted to visu
 
 <p align="center">
 <img src="images/default_pca.png" />
+</p>
 
 We were encouraged by this visualization, since it appears that each label forms fairly distinctive groups. This portends well for future supervised learning / classification efforts. 
 
@@ -34,7 +35,7 @@ We also wanted to gain an understanding of the semantic differences between true
 
 <p align="center">
 <img src="images/default_words.png" />
-
+</p>
 
 This visualization allows us to get an inuitive understanding of the topics associated with each label. For instance, it appears that true tweets tend to focus on topics related to disease prevention and "evidence", while false tweets tend to contain comparisons to the common flu, and may contain referenes to political leaders.
 
