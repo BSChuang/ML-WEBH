@@ -120,7 +120,7 @@ Below, we graph the correlation between fake tweets and the words within those t
 <img src="images/semantic_NEW.png" />
 </p>
 
-### Discussion
+## Discussion
 
 Through the use of unsupervised and supervised machine learning algorithms, our project can reliably identify fake news with a cross validated f1-score of 0.93. With this success, the results of our project could be used to flag fake news posts on social media for further review. This involves some room for error, as our implementation isn’t 100% accurate at labeling fake/real posts. To fully utilize these predictions, we recommend adding in an element of human review to allow for false positives without immediately taking down real posts. Through this system of flagging and reviewing, our model can be used to help control the spread of fake news and misinformation surrounding Covid-19 on social media sites and improve trust by the user.
 
@@ -140,6 +140,8 @@ Limeng Cui, Dongwon Lee,
 [https://arxiv.org/pdf/2006.00885.pdf](https://arxiv.org/pdf/2006.00885.pdf)
 
 ### Links
-Google Colab: [https://colab.research.google.com/drive/1ZzHke7KS7PVrD3Q1yTxCcyKJLDQDFHdr?usp=sharing](https://colab.research.google.com/drive/1ZzHke7KS7PVrD3Q1yTxCcyKJLDQDFHdr?usp=sharing)
+Unsupervised Colab: [https://colab.research.google.com/drive/1ZzHke7KS7PVrD3Q1yTxCcyKJLDQDFHdr?usp=sharing](https://colab.research.google.com/drive/1ZzHke7KS7PVrD3Q1yTxCcyKJLDQDFHdr?usp=sharing)
 
-Midterm Video: [https://www.youtube.com/watch?v=W9N257AYGyU](https://www.youtube.com/watch?v=W9N257AYGyU)
+Supervised Colab: [https://colab.research.google.com/drive/1KjQYkK-9KcYAwyQ_9UF8l5KytRyavnmd#scrollTo=d3-M9VoFVVgs](https://colab.research.google.com/drive/1KjQYkK-9KcYAwyQ_9UF8l5KytRyavnmd#scrollTo=d3-M9VoFVVgs)
+
+Final Report Video: [https://www.youtube.com/watch?v=xXQwCKvHHhI](https://www.youtube.com/watch?v=xXQwCKvHHhI)
