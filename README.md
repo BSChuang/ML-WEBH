@@ -1,7 +1,7 @@
 # ML-WEBH
 
 
-Hannah Donahue, Ethan Roland, Ben Chuang, J. Hunter
+Hannah Donahue, Ethan Roland, Ben Chuang, Will Hunter
 
 Repository for CS4600 - Machine Learning at Georgia Tech
 
