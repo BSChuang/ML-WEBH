@@ -6,11 +6,11 @@ Using ML techniques to automate the detection of Covid-19 related fake news
 
 [Video Report](https://www.youtube.com/watch?v=xXQwCKvHHhI)
 
-### Credit
+## Credit
 
 Hannah Donahue, Ethan Roland, Ben Chuang, Will Hunter
 
-### Colabs
+## Colabs
 
 Unsupervised Learning: https://colab.research.google.com/drive/1ZzHke7KS7PVrD3Q1yTxCcyKJLDQDFHdr
 
