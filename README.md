@@ -2,7 +2,7 @@
 
 Repository for CS4600 - Machine Learning at Georgia Tech
 
-Using ML techniques to automate the detection of Covid-19 related fake news
+Using ML techniques to automate the detection of Covid misinformation.
 
 [Video Report](https://www.youtube.com/watch?v=xXQwCKvHHhI)
 
